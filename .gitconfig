@@ -1,0 +1,16 @@
+[user]
+	email = olivier.mattei@s4m.io
+	name = Olivier Mattei
+[alias]
+	plog = log --graph --format='%Cgreen%h %Cred%aN%Cblue%d%Creset %s %C(yellow)(%cr)%Creset'
+	ri = "!f() { set -x; git add . && git commit -m \"HRT-$1 prepare release for staging $2\" && git tag -a $2 -m \"HRT-$1 prepare release for staging $2\" && git push && git push --tags; set +x; }; f"
+	rc = "!f() { set -x; git tag -a $2 -m \"HRT-$1 prepare release for staging $2\" && git push && git push --tags; set +x; }; f"
+	lasttag = describe --tags --abbrev=0
+#	cleanbranch = branch --merged | grep -Ev \"\\*|master|develop\" | xargs -n 1 git branch -d
+#	clean = '!git branch --merged | grep -Ev "\*|master|develop" | xargs -n 1 echo'
+	ck = "!f() { git checkout $1; }; f" 
+	cb = !git branch --merged | grep -Ev \"\\*|master|develop\" | xargs -n 1 git branch -d
+[core]
+	editor = vim
+[push]
+	default = current
